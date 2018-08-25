@@ -22,7 +22,7 @@ class LoginTest extends TestCase
             'password' => 'secret',
         ]);
 
-        $this->seeText('You are logged in!');
+        $this->seeText('You are logged in as Nama Member!');
         $this->seePageIs(route('home'));
         $this->seeIsAuthenticated();
 

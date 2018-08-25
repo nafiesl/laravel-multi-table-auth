@@ -13,7 +13,7 @@ class CustomerLoginTest extends TestCase
     /** @test */
     public function customer_can_login_and_logout()
     {
-        $customer = factory(Customer::class)->create(['name' => 'Nama Member', 'email' => 'email@mail.com']);
+        $customer = factory(Customer::class)->create(['name' => 'Nama Customer', 'email' => 'email@mail.com']);
 
         $this->visit(route('customer.login'));
 
@@ -22,7 +22,7 @@ class CustomerLoginTest extends TestCase
             'password' => 'secret',
         ]);
 
-        $this->seeText('You are logged in!');
+        $this->seeText('You are logged in as Nama Customer!');
         $this->seePageIs(route('customer.home'));
         $this->seeIsAuthenticated('customer');
 
