@@ -46,7 +46,7 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
-        $this->guard('web')->logout();
+        $this->guard()->logout();
 
         return $this->loggedOut($request) ?: redirect()->route('login');
     }
