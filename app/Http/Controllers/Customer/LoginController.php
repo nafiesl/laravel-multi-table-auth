@@ -25,7 +25,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest:customer')->except('logout');
     }
 
     /**
@@ -75,9 +75,7 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
-        $this->guard('customer')->logout();
-
-        $request->session()->invalidate();
+        $this->guard()->logout();
 
         return $this->loggedOut($request) ?: redirect()->route('customer.login');
     }

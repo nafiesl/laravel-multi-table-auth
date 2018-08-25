@@ -42,12 +42,9 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
-                        @else
+                        @endguest
                             @auth('web')
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -55,6 +52,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('home') }}">{{ __('Home') }}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -66,6 +64,10 @@
                                     </form>
                                 </div>
                             </li>
+                            @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
                             @endauth
                             @auth('customer')
                             <li class="nav-item dropdown">
@@ -74,6 +76,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('customer.home') }}">{{ __('Customer Home') }}</a>
                                     <a class="dropdown-item" href="{{ route('customer.logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('customer-logout-form').submit();">
@@ -85,8 +88,11 @@
                                     </form>
                                 </div>
                             </li>
+                            @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('customer.login') }}">{{ __('Customer Login') }}</a>
+                            </li>
                             @endauth
-                        @endguest
                     </ul>
                 </div>
             </div>
