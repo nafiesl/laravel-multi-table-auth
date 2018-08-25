@@ -50,6 +50,6 @@ class CustomerLoginTest extends TestCase
     public function unauthenticated_customers_are_redirects_to_login_page()
     {
         $this->visit(route('customer.home'));
-        $this->seePageIs(route('login'));
+        $this->seePageIs(route('customer.login'));
     }
 }
