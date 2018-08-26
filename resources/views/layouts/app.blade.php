@@ -40,11 +40,6 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endguest
                             @auth('web')
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -67,6 +62,9 @@
                             @else
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('User Login') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('User Register') }}</a>
                             </li>
                             @endauth
                             @auth('customer')
@@ -91,6 +89,9 @@
                             @else
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('customer.login') }}">{{ __('Customer Login') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('customer.register') }}">{{ __('Customer Register') }}</a>
                             </li>
                             @endauth
                     </ul>
